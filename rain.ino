@@ -34,10 +34,12 @@ void loop() {
   Serial.print(distance);
   Serial.println(" cm");
 
-  // Send distance data to Bluetooth module
-  BTserial.print("Distance: ");
-  BTserial.print(distance);
-  BTserial.println(" cm");
+  // Send data if bluetooth is available
+  if (BTSerial.available()) {
+    BTSerial.print("Distance: ");
+    BTSerial.print(distance);
+    BTSerial.println(" cm");
+  }
 
   delay(1000); // Adjust delay as needed for the application
 }
